@@ -1,0 +1,91 @@
+#store {
+    /* makes absolutely position of other objects relative to chat container */
+    position: relative;
+
+    /* size */
+    width: 90%;
+    height: 90%;
+
+    /* background color */
+    background-color: #00A69C;
+
+    /* border settings */
+    border: 2px solid #A71930;
+
+    /* Rounds the sharp corners by 12 pixels */
+    border-radius: 12px;
+
+    /* soft shadow */
+    box-shadow: 0 10px 30px #0B0B0B;
+
+    /* activates flexbox */
+    display: flex;
+
+    /* Put blocks vertically */
+    flex-direction: column;
+
+    /* hide everything out of border */
+    overflow: hidden;
+}
+
+#Fractal-btn {
+    /* position in window */
+    position: absolute;
+    top: 2%;
+    right: 47%;
+
+    /* background color */
+    background-color: #0B0B0B;
+
+    /* text color */
+    color: #FFFFFF;
+
+    /* border settings */
+    border: none;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+#Fractal-btn:hover {
+    box-shadow: 0 0 10px 2px #C6C6C6;
+    background-color: #A71930;
+    color: #0B0B0B;
+}
+
+#vis3d-btn {
+    /* position in window */
+    position: absolute;
+    top: 10%;
+    right: 47%;
+
+    /* background color */
+    background-color: #0B0B0B;
+
+    /* text color */
+    color: #FFFFFF;
+
+    /* border settings */
+    border: none;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+#vis3d-btn:hover {
+    box-shadow: 0 0 10px 2px #C6C6C6;
+    background-color: #A71930;
+    color: #0B0B0B;
+}
