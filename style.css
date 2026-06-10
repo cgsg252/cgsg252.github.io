@@ -3,8 +3,8 @@
     position: relative;
 
     /* size */
-    width: 1500px;
-    height: 900px;
+    width: 98vw;
+    height: 98vh;
 
     /* background color */
     background-color: #00A69C;
@@ -29,10 +29,13 @@
 }
 
 #Fractal-btn {
+    width: 90%;
+    height: 10%;
+
     /* position in window */
     position: absolute;
     top: 2%;
-    right: 47%;
+    right: 5%;
 
     /* background color */
     background-color: #0B0B0B;
@@ -54,16 +57,19 @@
 }
 
 #Fractal-btn:hover {
-    box-shadow: 0 0 10px 2px #C6C6C6;
+    box-shadow: 0 0 20px 10px #C6C6C6;
     background-color: #A71930;
     color: #0B0B0B;
 }
 
 #vis3d-btn {
+    width: 90%;
+    height: 10%;
+
     /* position in window */
     position: absolute;
-    top: 10%;
-    right: 47%;
+    top: 15%;
+    right: 5%;
 
     /* background color */
     background-color: #0B0B0B;
@@ -85,7 +91,7 @@
 }
 
 #vis3d-btn:hover {
-    box-shadow: 0 0 10px 2px #C6C6C6;
+    box-shadow: 0 0 20px 10px #C6C6C6;
     background-color: #A71930;
     color: #0B0B0B;
 }
