@@ -1,0 +1,294 @@
+/* 1. PAGE SETUP (GLOBAL STYLES) */
+
+body {
+    /* font */
+    font-family: 'Segoe UI';
+
+    /* background color */
+    background-color: #0C182F;
+
+    /* activates Flexbox layout */
+    display: flex;
+
+    /* horizontally centers chat */
+    justify-content: center;
+
+    /* vertically centers chat */
+    align-items: center;
+
+    /* body take 100% window's height */
+    height: 100vh;
+
+    /* Removes the browser's default blank space */
+    margin: 0;
+}
+
+/* 2. MAIN CHAT APPLICATION BOX */
+
+#chat-container {
+    /* makes absolutely position of other objects relative to chat container */
+    position: relative;
+
+    /* size */
+    width: 90%;
+    height: 90%;
+
+    /* background color */
+    background-color: #162542;
+
+    /* border settings */
+    border: 2px solid #E10600;
+
+    /* Rounds the sharp corners of the chat box by 12 pixels */
+    border-radius: 12px;
+
+    /* soft shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* activates flexbox */
+    display: flex;
+
+    /* Put blocks vertically */
+    flex-direction: column;
+
+    /* hide everything out of border */
+    overflow: hidden;
+}
+
+/* 3. MESSAGES SCROLLABLE WINDOW */
+
+.messages-window {
+    /* fill all available space */
+    flex: 1;
+
+    /* add space between window and text */
+    padding: 20px;
+
+    /* vertical scroll */
+    overflow-y: auto;
+
+    /* background color */
+    background-color: #0b121f;
+}
+
+/* 4. INDIVIDUAL MESSAGE BUBBLES */
+
+#main {
+    display: flex;
+
+    /* messages go to one column */
+    flex-direction: column;
+
+    /* Removes the default points or numbers from the <ol> list */
+    list-style-type: none;
+
+    /* Removes default browser spacing inside the list */
+    padding: 0;
+
+    /* Removes default browser spacing outside the list */
+    margin: 0;
+}
+
+#main li {
+    /* background color */
+    background-color: #1a2942;
+
+    /* line in left */
+    border-left: 4px solid #FFCC00;
+
+    /* space between window and text */
+    padding: 10px 14px 10px 16px;
+
+    /* rounds the message's corners */
+    border-radius: 8px;
+
+    /* space between messages */
+    margin-bottom: 7px;
+
+    /* width of message in % from window width */
+    max-width: 75%;
+
+    /* long text go to next line */
+    word-wrap: break-word;
+
+    /* size of font */
+    font-size: 15px;
+
+    /* space between lines */
+    line-height: 1.4;
+
+    /* text color */
+    color: #ffffff;
+}
+
+/* clients own messages normal style */
+#main li.own-message {
+    /* put message to right side */
+    align-self: flex-end;
+
+    /* background-color */
+    background-color: #1a2942;
+
+    /* border color */
+    border-left: 4px solid #FFCC00;
+
+    /* border circut radius */
+    border-radius: 4px 12px 12px 12px;
+
+    /* text started from left side */
+    text-align: left;
+}
+
+/* clients own messages bold style */
+#main li.own-message strong {
+    /* text color */
+    color: #ff6b6b;
+}
+
+/* other messages normal style */
+#main li.other-message {
+    /* move message to left side */
+    align-self: flex-start;
+
+    /* background color */
+    background-color: #25395f;
+
+    /* border style */
+    border-right: 4px solid #E10600;
+    border-radius: 12px 4px 12px 12px;
+}
+
+/* other messages bold style */
+#main li.other-message strong {
+    color: #f7d070;
+}
+
+/* 5. BOTTOM INPUT FORM AREA */
+
+#chat-form {
+    /* places text field and send button in line */
+    display: flex;
+
+    /* add space between them */
+    padding: 15px;
+
+    /* background color */
+    background-color: #162542;
+
+    /* separator line */
+    border-top: 2px solid #E10600;
+}
+
+#message-input {
+    /* text field fill all width */
+    flex: 1;
+
+    /* add inner space */
+    padding: 10px 15px;
+
+    /* type field color */
+    background-color: #0b121f;
+
+    /* type field border */
+    border: 1px solid #25395f;
+
+    /* Rounds the corners */
+    border-radius: 20px;
+
+    /* typing text color */
+    color: #ffffff;
+
+    /* font size */
+    font-size: 15px;
+
+    /* Removes default browser outline  */
+    outline: none;
+}
+
+/* when the user clicks inside the input box */
+#message-input:focus {
+    /* border color */
+    border-color: #FFCC00;
+
+    /* shadow around box */
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+}
+
+#send-btn {
+    /* background color */
+    background-color: #E10600;
+
+    /* text color */
+    color: #ffffff;
+
+    /* removes the default border */
+    border: none;
+
+    /* rounds the corners */
+    border-radius: 20px;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* space between button and text field */
+    margin-left: 10px;
+
+    /* changes the cursor to a pointer */
+    cursor: pointer;
+
+    /* bold text */
+    font-weight: bold;
+}
+
+/* when cursor is over the send button */
+#send-btn:hover {
+    /* background color */
+    background-color: #FFCC00;
+
+    /* box shadow */
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+
+    /* text color */
+    color: #000000;
+}
+
+#sign-out-btn {
+    /* size */
+    width: 150px;
+    height: 40px;
+
+    /* position in window */
+    position: absolute;
+    top: 2%;
+    right: 47%;
+
+    /* background color */
+    background-color: #E10600;
+
+    /* text color */
+    color: #FFFFFF;
+
+    /* border settings */
+    border: none;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+/* when mouse on button */
+#sign-out-btn:hover {
+    /* box shadow */
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+
+    /* background color */
+    background-color: #FFCC00;
+
+    /* text color */
+    color: #000000;
+}

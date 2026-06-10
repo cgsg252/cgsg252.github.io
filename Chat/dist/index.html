@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Bull Chat</title>
+    <!-- Add style file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="redbull-logo.png">
+</head>
+
+<body>
+    <div id="chat-container">
+        <!-- Block 1 - window with messages -->
+        <div class="messages-window">
+            <ol id="main"></ol>
+        </div>
+        <!-- Block 2 - sending form -->
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Type something... Max letter count: 500"
+                maxlength="500" />
+            <button type="submit" id="send-btn">Send</button>
+        </form>
+        <!-- Block 3 - utils -->
+        <button type="button" id="sign-out-btn">Change Name</button>
+    </div>
+
+    <script src="bundle.js"></script>
+</body>
