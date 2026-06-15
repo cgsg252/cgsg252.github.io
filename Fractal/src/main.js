@@ -9,8 +9,8 @@ function initGL(canvas) {
     gl.viewportWidth = canvas.width;
     gl.viewportHeight = canvas.height;
 }
-let WindowW = 930.0, WindowH = 930.0, WindowH0 = 0, WindowW0 = 0, MouseX = 0, MouseY = 0,
-    IsDown = false, MoveY = 0, MoveX = 0, Scroll = 0;
+let WindowW = 930.0, WindowH = 930.0, WindowH0 = 0.0, WindowW0 = 0.0, MouseX = 0.0, MouseY = 0.0,
+    IsDown = false, MoveY = 0.0, MoveX = 0.0, Scroll = 1.0, CoefX = 0.0, CoefY = 0.0;
 
 function getShader(shaderStr, type) {
     const shader = gl.createShader(type);
@@ -25,7 +25,8 @@ function getShader(shaderStr, type) {
     return shader;
 }
 
-let window_height, window_width, u_time_location, movex, movey, movewheel, color, factorTime, factorAdd;
+let window_height, window_width, u_time_location, movex, movey, movewheel, color, factorTime, factorAdd, mousex, mousey,
+    coefx, coefy;
 const params = {
     time_fractal_factor: -0.45,
     add_fractal_factor: -0.10,
@@ -77,6 +78,10 @@ function initShaders() {
             color = gl.getUniformLocation(program, "color");
             factorTime = gl.getUniformLocation(program, "factortime");
             factorAdd = gl.getUniformLocation(program, "factoradd");
+            mousex = gl.getUniformLocation(program, "MouseX");
+            mousey = gl.getUniformLocation(program, "MouseY");
+            coefx = gl.getUniformLocation(program, "coefX");
+            coefy = gl.getUniformLocation(program, "coefY");
         })
         .catch((error) => {
             console.log(error);
@@ -114,10 +119,16 @@ function drawScene() {
     gl.uniform3f(color, params.color.r / 255, params.color.g / 255, params.color.b / 255);
     gl.uniform1f(factorTime, params.time_fractal_factor);
     gl.uniform1f(factorAdd, params.add_fractal_factor);
+    gl.uniform1f(mousex, MouseX);
+    gl.uniform1f(mousey, MouseY);
+    gl.uniform1f(coefx, CoefX);
+    gl.uniform1f(coefy, CoefY);
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     window.requestAnimationFrame(drawScene);
 }
+
+let oldScroll = 0.0, mouseCenterX, mouseCenterY;
 
 export function onStart() {
     let canvas = document.getElementById("webgl-canvas");
@@ -125,8 +136,8 @@ export function onStart() {
     canvas.onmousemove = (ev) => {
         console.log(`(${ev.x}, ${ev.y})`);
         if (IsDown) {
-            MoveY = MoveY - MouseY + ev.y;
-            MoveX = MoveX + MouseX - ev.x;
+            MoveX -= (ev.x - MouseX) * Scroll;
+            MoveY += (ev.y - MouseY) * Scroll;
         }
         MouseX = ev.x;
         MouseY = ev.y;
@@ -140,10 +151,30 @@ export function onStart() {
         console.log(2);
     };
     canvas.onwheel = (ev) => {
-        if (ev.deltaY < 0)
-            Scroll += 15;
-        else if (ev.deltaY > 0)
-            Scroll -= 15;
+        let mouseFractalX = (MouseX - 930.0 * 0.5) * Scroll + MoveX;
+        let mouseFractalY = ((930.0 - MouseY) - 930.0 * 0.5) * Scroll + MoveY;
+
+        if (ev.deltaY < 0) {
+            Scroll *= 0.85;
+        } else if (ev.deltaY > 0) {
+            Scroll /= 0.85;
+        }
+
+        if (Scroll > 1.0) {
+            Scroll = 1.0;
+        }
+
+        MoveX = mouseFractalX - (MouseX - 930.0 * 0.5) * Scroll;
+        MoveY = mouseFractalY - ((930.0 - MouseY) - 930.0 * 0.5) * Scroll;
+
+        if (Scroll === 1.0) {
+            MoveX = 0.0;
+            MoveY = 0.0;
+        }
+
+        CoefX = 0.0;
+        CoefY = 0.0;
+
         console.log(3);
     };
     initGL(canvas);

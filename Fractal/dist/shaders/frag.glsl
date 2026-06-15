@@ -11,6 +11,10 @@ uniform float scroll;
 uniform vec3 color;
 uniform float factortime;
 uniform float factoradd;
+uniform float MouseX;
+uniform float MouseY;
+uniform float coefX;
+uniform float coefY;
 
 float Norm2( vec2 Z )
 {
@@ -74,20 +78,28 @@ int JuliaColor( vec2 Z, vec2 C )
 
 vec3 PutJulia( float H, float W )
 {            
-    float X0 = -2.0, Y0 = -2.0, X1 = 2.0, Y1 = 2.0, Xs = gl_FragCoord.x + movex + scroll * 0.5, Ys = gl_FragCoord.y + movey + scroll * 0.5;
+    float X0 = -2.0, Y0 = -2.0, X1 = 2.0, Y1 = 2.0;
+    
+    float Xs = (gl_FragCoord.x - W * 0.5) * scroll + movex;
+    float Ys = (gl_FragCoord.y - H * 0.5) * scroll + movey; 
+    
     vec2 z, c;
     int n;
 
     c.x = factoradd + factortime * sin(u_time);
     c.y = factoradd + factortime * sin(u_time);
-    z.x = Xs * (X1 - X0) / W + X0;
-    z.y = Ys * (Y1 - Y0) / H + Y0;
+    
+    z.x = Xs * (X1 - X0) / W;
+    z.y = Ys * (Y1 - Y0) / H;
+    
     n = abs(JuliaColor(z, c));
-    return vec3(n / 30, n / 3, n * 33);
+    
+    float nF = float(n);
+    return vec3(nF / 255.0, nF / 120.0, nF / 40.0);
 }
 
 void main() {
     //o_color = vec4(1, 0, 1, 1);
-    //o_color = vec4(PutMandel(window_height + scroll, window_width + scroll), 1);
-    o_color = vec4(PutJulia(window_height + scroll, window_width + scroll) * color, 1);
+    //o_color = vec4(PutMandel(window_height, window_width), 1);
+    o_color = vec4(PutJulia(window_height, window_width) * color, 1);
 }
