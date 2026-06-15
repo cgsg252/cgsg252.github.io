@@ -31,7 +31,8 @@ const params = {
     time_fractal_factor: -0.45,
     add_fractal_factor: -0.10,
     color: { r: 255, g: 0, b: 255 },
-    title: "Julia fractal"
+    title: "Julia fractal",
+    pause: false
 };
 
 function loadShaderText(uri) {
@@ -100,6 +101,8 @@ function initBuffer() {
     );
 }
 
+let timeFromStart = 0.0, wasPaused = params.pause;
+
 function drawScene() {
     gl.clearColor(0, 1, 0, 1);
 
@@ -109,7 +112,15 @@ function drawScene() {
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
-    let timeFromStart = (Date.now() - startTime);
+    if (params.pause && !wasPaused) {
+        startTime += Date.now() - timeFromStart;
+        wasPaused = true;
+    } else if (!params.pause && wasPaused) {
+        startTime = Date.now() - timeFromStart;
+        wasPaused = false;
+    }
+    if (!params.pause)
+        timeFromStart = Date.now() - startTime;
     gl.uniform1f(u_time_location, timeFromStart / 1000.0);
     gl.uniform1f(window_height, WindowH);
     gl.uniform1f(window_width, WindowW);
@@ -200,5 +211,6 @@ window.addEventListener("load", () => {
     pane.addBinding(params, "add_fractal_factor");
     pane.addBinding(params, "color");
     pane.addBinding(params, "title");
+    pane.addBinding(params, "pause");
     onStart();
 })
