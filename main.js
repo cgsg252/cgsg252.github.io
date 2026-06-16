@@ -11,5 +11,5 @@ button3dvis.addEventListener("click", (event) => {
 });
 
 buttonChat.addEventListener("click", (event) => {
-    window.location.href = './Chat/dist/index.html';
+    window.location.href = 'http://91.107.122.249:6767';
 });
