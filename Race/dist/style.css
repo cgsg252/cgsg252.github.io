@@ -1,0 +1,409 @@
+/* ==================================
+   PAGE SETUP
+   ================================== */
+
+body {
+    /* size */
+    height: 100%;
+    width: 100%;
+
+    /* background color */
+    background-color: #0C182F;
+
+    /* hide scroll */
+    overflow: hidden;
+
+    /* delete outer space */
+    margin: 0;
+    /* delete inner space */
+    padding: 0;
+}
+
+/* ==================================
+   GAME
+   ================================== */
+
+#gameCanvas {
+    /* delete odd pixels in down */
+    display: block;
+
+    /* absolute position */
+    position: absolute;
+
+    /* add space */
+    top: 0;
+    left: 0;
+
+    /* size */
+    width: 100vw;
+    height: 100vh;
+
+    /* showing level */
+    z-index: 1;
+}
+
+/* ==================================
+   MINIMAP
+   ================================== */
+
+#minimapCanvas {
+    /* delete odd pixels in down */
+    display: block;
+
+    /* absolute position */
+    position: absolute;
+
+    /* add space */
+    top: 0;
+    left: 0;
+
+    /* size */
+    width: 35vh;
+    height: 35vh;
+
+    /* showing level */
+    z-index: 2;
+
+    /* border setting */
+    border: 2px solid #565F64;
+}
+
+/* ==================================
+   GAME UI
+   ================================== */
+
+#gameUI {
+    /* size */
+    width: 20vw;
+    height: 30vh;
+
+    /* relative position */
+    position: relative;
+
+    /* spaces */
+    margin-left: auto;
+    margin-top: 0px;
+    margin-right: 0px;
+
+    /* background color */
+    background-color: #00A19B00;
+
+    /* add space */
+    top: 1px;
+    right: 1px;
+
+    /* showing level */
+    z-index: 1;
+}
+
+#pause-btn {
+    /* position */
+    position: absolute;
+
+    /* add space */
+    top: 7%;
+    right: 14%;
+}
+
+#startRace-btn {
+    /* position */
+    position: absolute;
+
+    /* add space */
+    top: 27%;
+    right: 14%;
+}
+
+/* ==================================
+   PAUSE UI
+   ================================== */
+
+#pauseUI {
+    /* size */
+    width: 100vw;
+    height: 100vh;
+
+    /* relative position */
+    position: absolute;
+
+    /* spaces */
+    margin-right: auto;
+    margin-top: 0vh;
+    margin-left: 0vw;
+
+    /* background color and filter */
+    background-color: #00A19B00;
+    backdrop-filter: blur(5px);
+
+    /* add space */
+    top: 1px;
+    right: 1px;
+
+    /* showing level */
+    z-index: 3;
+}
+
+#pause-block {
+    /* size */
+    width: 20vw;
+    height: 40vh;
+
+    /* relative position */
+    position: relative;
+
+    /* spaces */
+    margin-top: 30vh;
+    margin-left: 40vw;
+
+    /* background color */
+    background-color: #565F649F;
+
+    /* showing level */
+    z-index: 3;
+
+    /* flex placing in block */
+    display: flex;
+
+    /* made buttons show from up to down */
+    flex-direction: column;
+
+    /* center items by horizont */
+    align-items: center;
+
+    /* center for vertical */
+    justify-content: center;
+
+    /* space between buttons */
+    gap: 15px;
+}
+
+/* ==================================
+   MAIN MENU
+   ================================== */
+
+#mainMenu {
+    /* size */
+    width: 100vw;
+    height: 100vh;
+
+    /* absolute position */
+    position: relative;
+
+    /* add space */
+    margin-top: 0px;
+    margin-left: 0px;
+
+    /* background color */
+    background-color: #15151E;
+
+    /* showing level */
+    z-index: 1;
+
+    /* border setting */
+    border: none;
+
+    /* display */
+    display: flex;
+
+    /* centered items */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    /* dist between items */
+    gap: 15px;
+}
+
+/* ==================================
+   CHANGE CAR MENU
+   ================================== */
+
+#changeCar {
+    /* size */
+    width: 100vw;
+    height: 100vh;
+
+    /* absolute position */
+    position: relative;
+
+    /* add space */
+    margin-top: 0px;
+    margin-left: 0px;
+
+    /* background color */
+    background-color: #15151E;
+
+    /* showing level */
+    z-index: 1;
+
+    /* border setting */
+    border: none;
+
+    /* display */
+    display: flex;
+
+    /* centered items */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    /* dist between items */
+    gap: 15px;
+}
+
+/* ==================================
+   SIGN IN
+   ================================== */
+
+#sign_in {
+    /* display */
+    display: flex;
+
+    /* centered items */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    /* dist between items */
+    gap: 15px;
+
+    /* absolute position */
+    position: relative;
+
+    /* add space */
+    top: 0;
+    left: 0;
+
+    /* size */
+    width: 100vw;
+    height: 100vh;
+
+    /* showing level */
+    z-index: 1;
+
+    /* background color */
+    background-color: #0B0B0B;
+
+    /* text color */
+    color: #FFFFFF;
+    font-size: large;
+}
+
+#name-input {
+    /* Inner spacing */
+    padding: 10px 15px;
+
+    /* Text size */
+    font-size: x-large;
+
+    /* Border style */
+    border: 0px solid #FF1801;
+
+    /* Rounded corners */
+    border-radius: 20px;
+
+    /* Background */
+    background-color: #565F64;
+
+    /* Text color */
+    color: #FFFFFF;
+}
+
+#name-input:focus {
+    box-shadow: 0 0 7px 3px #B300B3;
+}
+
+/* ==================================
+   CLASSES
+   ================================== */
+
+/* hidden */
+.hidden {
+    display: none !important;
+}
+
+/* ui button */
+.ui-btn {
+    /* font size */
+    font-size: larger;
+
+    /* background color */
+    background-color: #00A19B;
+
+    /* text color */
+    color: #FFFFFF;
+
+    /* border settings */
+    border: none;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+.ui-btn:hover {
+    /* shadow around button */
+    box-shadow: 0 0 5px 2px #C6C6C6;
+
+    /* background color */
+    background-color: #A71930;
+
+    /* text color */
+    color: #0B0B0B;
+}
+
+.ui-btn:active {
+    /* background color */
+    background-color: #C8CCCE;
+
+    /* text color */
+    color: #000000;
+}
+
+/* ui button */
+.menu-btn {
+    /* font size */
+    font-size: larger;
+
+    /* background color */
+    background-color: #15151E;
+
+    /* text color */
+    color: #FF1801;
+
+    /* border settings */
+    border: 3px solid #B300B3;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+.menu-btn:hover {
+    /* shadow around button */
+    box-shadow: 0 0 10px 5px #B300B3;
+
+    /* background color */
+    background-color: #FFFFFF;
+
+    /* text color */
+    color: #15151E;
+}
+
+.menu-btn:active {
+    /* background color */
+    background-color: #00D100;
+
+    /* text color */
+    color: #FFFFFF;
+}

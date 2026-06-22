@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Title -->
+    <title>Race 2D</title>
+    <!-- Add style file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Game canvas -->
+    <canvas id="gameCanvas" class="hidden"></canvas>
+    <!-- Minimap canvas -->
+    <canvas id="minimapCanvas" class="hidden"></canvas>
+    <!-- Connect js file -->
+    <script src="bundle.js"></script>
+
+    <!-- Game UI -->
+    <div id="gameUI" class="hidden">
+        <button type="button" class="ui-btn" id="pause-btn">Pause</button>
+        <button type="button" class="ui-btn" id="startRace-btn">Start Race</button>
+    </div>
+
+    <!-- Pause UI -->
+    <div id="pauseUI" class="hidden">
+        <div id="pause-block">
+            <button type="button" class="ui-btn" id="continue-btn">Continue</button>
+            <button type="button" class="ui-btn" id="menu-btn">Main menu</button>
+        </div>
+    </div>
+
+    <!-- Main menu -->
+    <div id="mainMenu" class="hidden">
+        <button type="button" class="menu-btn" id="play-btn">Play</button>
+        <button type="button" class="menu-btn" id="change_car-btn">Change Car</button>
+    </div>
+
+    <!-- Change car menu -->
+    <div id="changeCar" class="hidden">
+        <button type="button" class="menu-btn" id="blackCar-btn">Black</button>
+        <button type="button" class="menu-btn" id="renaultCar-btn">Renault</button>
+        <button type="button" class="menu-btn" id="yellowCar-btn">Yellow</button>
+        <button type="button" class="menu-btn" id="whiteCar-btn">White</button>
+        <button type="button" class="menu-btn" id="backToMainMenu-btn">Back to main menu</button>
+    </div>
+
+    <!-- Create account place -->
+    <div id="sign_in">
+        <h1>Welcome! What's your name?</h1>
+        <div>
+            <input type="text" id="name-input" placeholder="Your name" maxlength="500" />
+            <button type="button" id="sign-btn" class="menu-btn">Sign in</button>
+        </div>
+    </div>
+</body>
