@@ -129,3 +129,37 @@
     background-color: #A71930;
     color: #0B0B0B;
 }
+
+#race-btn {
+    width: 90%;
+    height: 10%;
+
+    /* position in window */
+    position: absolute;
+    top: 41%;
+    right: 5%;
+
+    /* background color */
+    background-color: #0B0B0B;
+
+    /* text color */
+    color: #FFFFFF;
+
+    /* border settings */
+    border: none;
+
+    /* change cursor when mouse on it */
+    cursor: pointer;
+
+    /* add inner space */
+    padding: 10px 24px;
+
+    /* rounds the corners */
+    border-radius: 20px;
+}
+
+#race-btn:hover {
+    box-shadow: 0 0 20px 10px #C6C6C6;
+    background-color: #A71930;
+    color: #0B0B0B;
+}
