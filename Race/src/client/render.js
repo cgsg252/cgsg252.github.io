@@ -62,6 +62,7 @@ export function initRender(username, socket) {
         carsOfPlayers[name].pos = cars[name].pos;
         carsOfPlayers[name].angle = cars[name].angle;
         carsOfPlayers[name].speed = cars[name].speed;
+
         carsOfPlayers[name].isLeft = cars[name].isLeft;
         carsOfPlayers[name].isRight = cars[name].isRight;
         carsOfPlayers[name].isStraight = cars[name].isStraight;
@@ -94,14 +95,19 @@ export function initRender(username, socket) {
     minimap.classList.add('hidden');
 }
 
+let frameCounter = 0.0;
+
 export function windowLoop(username, socket) {
+    frameCounter += 1.0;
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     time.time = (Date.now() - time.startTime) / 1000.0;
 
-    let car = carMove(keyboard, carsOfPlayers, username, canvas, socket);
+    let car = carMove(keyboard, carsOfPlayers, username, canvas, socket, time.time);
 
-    socket.emit("carPosUpdate", car, username);
+    if (frameCounter % 3.0 === 0.0)
+        socket.emit("carPosUpdate", car, username);
+
     carsDraw(context, carsOfPlayers, username);
 
     window.requestAnimationFrame(() => windowLoop(username, socket));

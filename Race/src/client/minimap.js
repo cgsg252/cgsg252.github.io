@@ -171,7 +171,12 @@ export function initMinimap(globalWidth, globalHeight, minimap) {
     glbWidth = globalWidth;
 }
 
+let frameCounter = 0.0;
+
 export function drawMinimap(carsOfPlayers) {
+    frameCounter += 1.0;
+    if (frameCounter % 4.0 !== 0.0)
+        return;
     if (contextMM) {
         contextMM.clearRect(0, 0, mWidth, mHeight);
 

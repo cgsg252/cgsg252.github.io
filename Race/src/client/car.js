@@ -134,7 +134,7 @@ function carRotate(keyboard) {
     }
 }
 
-export function carMove(keyboard, carsOfPlayers, username, canvas, socket) {
+export function carMove(keyboard, carsOfPlayers, username, canvas, socket, time) {
     if (carsOfPlayers && carsOfPlayers[username]) {
         car.image = carsOfPlayers[username].image;
         car.height = carsOfPlayers[username].height;

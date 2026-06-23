@@ -4625,7 +4625,12 @@
         glbWidth = globalWidth;
     }
 
+    let frameCounter$1 = 0.0;
+
     function drawMinimap(carsOfPlayers) {
+        frameCounter$1 += 1.0;
+        if (frameCounter$1 % 4.0 !== 0.0)
+            return;
         if (contextMM) {
             contextMM.clearRect(0, 0, mWidth, mHeight);
 
@@ -4790,7 +4795,7 @@
         }
     }
 
-    function carMove(keyboard, carsOfPlayers, username, canvas, socket) {
+    function carMove(keyboard, carsOfPlayers, username, canvas, socket, time) {
         if (carsOfPlayers && carsOfPlayers[username]) {
             car.image = carsOfPlayers[username].image;
             car.height = carsOfPlayers[username].height;
@@ -5025,6 +5030,7 @@
             carsOfPlayers[name].pos = cars[name].pos;
             carsOfPlayers[name].angle = cars[name].angle;
             carsOfPlayers[name].speed = cars[name].speed;
+
             carsOfPlayers[name].isLeft = cars[name].isLeft;
             carsOfPlayers[name].isRight = cars[name].isRight;
             carsOfPlayers[name].isStraight = cars[name].isStraight;
@@ -5056,12 +5062,17 @@
         minimap.classList.add('hidden');
     }
 
+    let frameCounter = 0.0;
+
     function windowLoop(username, socket) {
+        frameCounter += 1.0;
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         let car = carMove(keyboard, carsOfPlayers, username, canvas, socket);
 
-        socket.emit("carPosUpdate", car, username);
+        if (frameCounter % 3.0 === 0.0)
+            socket.emit("carPosUpdate", car, username);
+
         carsDraw(context, carsOfPlayers, username);
 
         window.requestAnimationFrame(() => windowLoop(username, socket));
